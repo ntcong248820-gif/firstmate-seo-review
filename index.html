@@ -2132,8 +2132,8 @@
           <div class="dnode dnode--hub">Claude · người điều phối<small>hiểu việc, chia vai, viết phiếu giao việc, kiểm kết quả</small></div>
           <div class="darrow">phiếu giao việc</div>
           <div class="dfan">
-            <div class="dagent c-anti"><b>Antigravity</b>Việc đã có công thức sẵn trong skill: SEO hình, đo trang, việc cần trình duyệt<br><span class="dtag">em chat tiếp trong app</span></div>
-            <div class="dagent c-codex"><b>Codex</b>Code, xử lý dữ liệu lớn, chạy theo lô<br><span class="dtag">em chat tiếp trong app</span></div>
+            <div class="dagent c-anti"><b>Antigravity</b>Làm task và sinh text rất nhanh: SEO hình, đo trang, việc cần trình duyệt<br><span class="dtag">em chat tiếp trong app</span></div>
+            <div class="dagent c-codex"><b>Codex</b>Code, xử lý dữ liệu, điều khiển chuột và bàn phím máy tính<br><span class="dtag">em chat tiếp trong app</span></div>
             <div class="dagent c-claude"><b>Claude phụ</b>Kiểm lại kết quả của agent khác, không tin agent tự báo<br><span class="dtag">kiểm chéo</span></div>
           </div>
           <div class="darrow">file bằng chứng</div>
@@ -2143,12 +2143,12 @@
         </div>
 
         <h3>Các agent trao đổi và phối hợp với nhau thế nào</h3>
-        <p>Cái em muốn xây không chỉ là cho nhiều agent <strong>chạy cùng lúc</strong>, mà là để chúng <strong>làm việc được với nhau</strong>, giống một nhóm có trưởng nhóm:</p>
+        <p>Cái em muốn xây không chỉ là cho nhiều agent <strong>chạy cùng lúc</strong>, mà là để chúng <strong>làm việc được với nhau</strong>, giống một nhóm làm việc thật:</p>
 
         <div class="facts">
           <div class="fact">
-            <div class="fact-k">Chia vai theo thế mạnh</div>
-            <p>Việc đã có công thức sẵn thì giao Antigravity vì nhanh, gọn. Việc code, dữ liệu thì giao Codex. Việc cần phán đoán, đọc số rồi kết luận thì Claude giữ lại.</p>
+            <div class="fact-k">Tận dụng thế mạnh của từng agent</div>
+            <p><strong>Antigravity</strong> làm task và sinh text rất nhanh, hợp với việc đã có công thức sẵn. <strong>Codex</strong> giỏi code, dữ liệu, và còn điều khiển được chuột, bàn phím máy tính như người thật. <strong>Claude</strong> giữ phần phán đoán, đọc số rồi kết luận.</p>
           </div>
           <div class="fact">
             <div class="fact-k">Nói chung một “ngôn ngữ”</div>
@@ -2159,10 +2159,6 @@
             <p>Kết quả Antigravity hay Codex trả về được một Claude khác kiểm lại từ dữ liệu thật. Agent tự báo “đạt” không được tính.</p>
           </div>
           <div class="fact">
-            <div class="fact-k">Có trưởng nhóm, không loạn</div>
-            <p>Chỉ Claude được giao việc. Agent làm việc không tự giao tiếp cho agent khác, nên không có cảnh việc bị giao lòng vòng giữa các agent, khó kiểm soát.</p>
-          </div>
-          <div class="fact fact--wide">
             <div class="fact-k">Việc hôm nay nối tiếp việc hôm qua</div>
             <p>Mỗi agent giữ lại cuộc chat của mình. Hôm sau cần làm tiếp thì mở lại đúng cuộc chat đó, agent nhớ mình đã làm gì, không phải giao lại từ đầu.</p>
           </div>
@@ -2185,7 +2181,7 @@
         </figure>
 
         <h3>Ví dụ trong công việc hằng ngày: một buổi nghiệm thu web</h3>
-        <p>Đây là cách các agent tiếp sức nhau khi em nghiệm thu giao diện web mới với bên IT. Em chỉ nói yêu cầu với Claude, phần còn lại các agent tự chuyền cho nhau:</p>
+        <p>Đây là cách các agent tiếp sức nhau khi em nghiệm thu giao diện web mới với bên IT. Mỗi dòng trên Sheet nghiệm thu là một hạng mục cần kiểm. Em chỉ nói yêu cầu với Claude, các agent chia nhau đi kiểm song song từng hạng mục rồi chuyền kết quả cho nhau:</p>
 
         <div class="relay">
           <div class="relay-step"><span class="who c-claude">Claude</span><p>Nhận yêu cầu nghiệm thu, chia thành từng phần cần đo, viết phiếu giao việc</p></div>
@@ -2198,9 +2194,15 @@
             </div>
           </div>
           <div class="relay-step"><span class="who c-claude">Claude phụ</span><p>Kiểm lại từng kết quả Antigravity và Codex trả về, đối chiếu dữ liệu thật</p></div>
-          <div class="relay-step"><span class="who c-claude">Claude</span><p>Tổng hợp, báo em dòng nào đạt, dòng nào lỗi để chuyển IT</p></div>
+          <div class="relay-step"><span class="who c-claude">Claude</span><p>Tổng hợp, <strong>ghi thẳng kết quả lên Sheet nghiệm thu dùng chung với IT</strong>, rồi báo em dòng nào đạt, dòng nào lỗi</p></div>
           <div class="relay-step"><span class="who c-anti">Antigravity</span><p>IT sửa xong thì đo lại đúng những dòng lỗi, không đo lại từ đầu</p></div>
         </div>
+
+        <figure class="shot">
+          <img src="assets/crew-sheet-nghiem-thu.webp" width="1780" height="1056" loading="lazy"
+            alt="Sheet nghiệm thu web dùng chung với IT, cột khung đỏ là mô tả kết quả các agent ghi lên cho từng hạng mục">
+          <figcaption><b>Sheet nghiệm thu dùng chung với IT.</b> Mỗi dòng là một hạng mục: title, mô tả, URL, breadcrumb… Cột khung đỏ là phần các agent đi kiểm song song rồi ghi thẳng lên: vòng kiểm, môi trường, kết quả đạt hay chưa, URL ví dụ. IT đọc ngay trên Sheet để sửa.</figcaption>
+        </figure>
 
         <figure class="shot shot--narrow">
           <img src="assets/crew-claude-dispatch.webp" width="636" height="1310" loading="lazy"
