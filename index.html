@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firstmate và việc SEO</title>
+  <meta name="description"
+    content="Nhận định sau khi test Firstmate: vì sao repo này hợp với lập trình nhưng chưa hợp với việc SEO hằng ngày.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── Light (mặc định) ── */
+    :root {
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+      --bg: #faf6f0;
+      --surface: #ffffff;
+      --surface2: #f4ede4;
+      --surface-elevated: #fffdf8;
+      --border: rgba(60, 40, 20, 0.09);
+      --border-bright: rgba(60, 40, 20, 0.18);
+      --text: #2c2a25;
+      --text-dim: #7c756a;
+      --text-bright: #1a1814;
+      --accent: #c2410c;
+      --accent-dim: rgba(194, 65, 12, 0.08);
+
+      --green: #4d7c0f;
+      --green-dim: rgba(77, 124, 15, 0.08);
+      --red: #b91c1c;
+      --red-dim: rgba(185, 28, 28, 0.07);
+      --amber: #b45309;
+      --amber-dim: rgba(180, 83, 9, 0.08);
+      --sage: #65a30d;
+      --sage-dim: rgba(101, 163, 13, 0.08);
+      --teal: #0f766e;
+      --teal-dim: rgba(15, 118, 110, 0.08);
+      --plum: #9f1239;
+      --plum-dim: rgba(159, 18, 57, 0.07);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #1c1916;
+        --surface: #262220;
+        --surface2: #2f2a26;
+        --surface-elevated: #3a3430;
+        --border: rgba(200, 180, 160, 0.10);
+        --border-bright: rgba(200, 180, 160, 0.2);
+        --text: #f0e8dc;
+        --text-dim: #a09888;
+        --text-bright: #fbf5ec;
+        --accent: #e8743f;
+        --accent-dim: rgba(232, 116, 63, 0.12);
+        --green: #a3e635;
+        --green-dim: rgba(163, 230, 53, 0.1);
+        --red: #fca5a5;
+        --red-dim: rgba(252, 165, 165, 0.1);
+        --amber: #fbbf24;
+        --amber-dim: rgba(251, 191, 36, 0.1);
+        --sage: #bef264;
+        --sage-dim: rgba(190, 242, 100, 0.1);
+        --teal: #5eead4;
+        --teal-dim: rgba(94, 234, 212, 0.1);
+        --plum: #fda4af;
+        --plum-dim: rgba(253, 164, 175, 0.1);
+      }
+    }
+
+    [data-theme="dark"] {
+      --bg: #1c1916;
+      --surface: #262220;
+      --surface2: #2f2a26;
+      --surface-elevated: #3a3430;
+      --border: rgba(200, 180, 160, 0.10);
+      --border-bright: rgba(200, 180, 160, 0.2);
+      --text: #f0e8dc;
+      --text-dim: #a09888;
+      --text-bright: #fbf5ec;
+      --accent: #e8743f;
+      --accent-dim: rgba(232, 116, 63, 0.12);
+      --green: #a3e635;
+      --green-dim: rgba(163, 230, 53, 0.1);
+      --red: #fca5a5;
+      --red-dim: rgba(252, 165, 165, 0.1);
+      --amber: #fbbf24;
+      --amber-dim: rgba(251, 191, 36, 0.1);
+      --sage: #bef264;
+      --sage-dim: rgba(190, 242, 100, 0.1);
+      --teal: #5eead4;
+      --teal-dim: rgba(94, 234, 212, 0.1);
+      --plum: #fda4af;
+      --plum-dim: rgba(253, 164, 175, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse at 30% 0%, var(--accent-dim) 0%, transparent 55%);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    /* ── Nút đổi sáng/tối ── */
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 300;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-dim);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background .15s, color .15s;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, .06);
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface2);
+      color: var(--text);
+    }
+
+    /* ── Khung trang + mục lục ── */
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 56px 32px 96px;
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 0 56px;
+    }
+
+    .main {
+      min-width: 0;
+      max-width: 780px;
+    }
+
+    .toc {
+      position: sticky;
+      top: 32px;
+      align-self: start;
+      grid-row: 1 / -1;
+      padding-top: 8px;
+    }
+
+    .toc-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .toc a {
+      display: block;
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 5px 10px;
+      border-left: 2px solid transparent;
+      border-radius: 0 6px 6px 0;
+      line-height: 1.45;
+      margin-bottom: 2px;
+      transition: all .15s;
+    }
+
+    .toc a:hover {
+      color: var(--text);
+      background: var(--surface2);
+    }
+
+    .toc a.active {
+      color: var(--text-bright);
+      border-left-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    .toc .pending {
+      color: var(--text-dim);
+      opacity: .55;
+      font-size: 13px;
+      padding: 5px 10px;
+      line-height: 1.45;
+    }
+
+    .toc .pending small {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .4px;
+    }
+
+    /* ── Đầu trang ── */
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--text-bright);
+      font-size: clamp(34px, 4.4vw, 52px);
+      line-height: 1.12;
+      letter-spacing: -0.5px;
+      margin: 0 0 22px;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .lead {
+      font-size: 19px;
+      line-height: 1.65;
+      color: var(--text);
+      margin: 0 0 14px;
+      max-width: 64ch;
+    }
+
+    .byline {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 0 0 56px;
+    }
+
+    /* ── Tiêu đề mục ── */
+    .sec {
+      scroll-margin-top: 24px;
+      padding-top: 8px;
+      margin-top: 64px;
+    }
+
+    .sec-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .sec-num b {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      color: var(--text-bright);
+      font-size: clamp(26px, 3vw, 34px);
+      line-height: 1.2;
+      margin: 0 0 22px;
+      text-wrap: balance;
+    }
+
+    h3 {
+      font-family: var(--font-body);
+      font-weight: 700;
+      color: var(--text-bright);
+      font-size: 17px;
+      margin: 36px 0 12px;
+    }
+
+    p {
+      margin: 0 0 1.2em;
+      max-width: 68ch;
+      text-wrap: pretty;
+    }
+
+    strong {
+      color: var(--text-bright);
+    }
+
+    /* ── Callout + trích dẫn ── */
+    .callout {
+      padding: 18px 22px;
+      border-radius: 10px;
+      margin: 26px 0;
+      border-left: 4px solid var(--c-border);
+      background: var(--c-bg);
+    }
+
+    .callout--pain {
+      --c-border: var(--amber);
+      --c-bg: var(--amber-dim);
+    }
+
+    .callout--key {
+      --c-border: var(--accent);
+      --c-bg: var(--accent-dim);
+    }
+
+    .callout__title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--c-border);
+      margin-bottom: 6px;
+    }
+
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quote {
+      margin: 30px 0;
+      padding: 4px 0 4px 22px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .quote p {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.45;
+      color: var(--text-bright);
+      margin: 0 0 6px;
+    }
+
+    .quote cite {
+      font-style: normal;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    /* ── So sánh 2 cột (bối cảnh) ── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 52px 1fr;
+      align-items: stretch;
+      margin: 30px 0;
+    }
+
+    .split>* {
+      min-width: 0;
+    }
+
+    .split-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .split-card--seo {
+      background: color-mix(in srgb, var(--surface) 90%, var(--teal) 10%);
+      border-color: color-mix(in srgb, var(--border) 40%, var(--teal) 60%);
+    }
+
+    .split-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .split-label::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--c, var(--text-dim));
+    }
+
+    .split-card h4 {
+      margin: 0 0 10px;
+      font-size: 17px;
+      color: var(--text-bright);
+    }
+
+    .split-card ul {
+      margin: 0;
+      padding-left: 1.15em;
+      font-size: 15px;
+    }
+
+    .split-card li {
+      margin-bottom: 4px;
+    }
+
+    .split-gap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--red);
+      font-weight: 600;
+      writing-mode: vertical-rl;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Luồng Firstmate ── */
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin: 28px 0 10px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px 16px 18px;
+      margin-right: 22px;
+      border-radius: 10px;
+    }
+
+    .step:last-child {
+      margin-right: 0;
+    }
+
+    .step:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -19px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 16px;
+    }
+
+    .step-n {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+    }
+
+    .step-t {
+      font-weight: 700;
+      color: var(--text-bright);
+      font-size: 15px;
+      line-height: 1.35;
+      margin: 4px 0 6px;
+    }
+
+    .step-d {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .step--code {
+      border-color: color-mix(in srgb, var(--border) 30%, var(--accent) 70%);
+      background: color-mix(in srgb, var(--surface) 92%, var(--accent) 8%);
+    }
+
+    .flow-note {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 0 0 8px;
+    }
+
+    /* ── Bằng chứng (thẻ đặc điểm) ── */
+    .facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .fact {
+      min-width: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+
+    .fact--wide {
+      grid-column: 1 / -1;
+    }
+
+    .fact-k {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .fact p {
+      font-size: 15px;
+      margin: 0;
+    }
+
+    .fact ol,
+    .fact ul {
+      margin: 6px 0 0;
+      padding-left: 1.3em;
+      font-size: 15px;
+    }
+
+    .fact li {
+      margin-bottom: 4px;
+    }
+
+    .term {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      background: var(--surface2);
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: var(--text-bright);
+    }
+
+    /* ── Ảnh minh hoạ ── */
+    figure.shot {
+      margin: 26px 0 30px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .07);
+    }
+
+    figure.shot img {
+      width: 100%;
+      height: auto;
+    }
+
+    figure.shot figcaption {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      line-height: 1.55;
+    }
+
+    figure.shot figcaption b {
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+
+    /* ── Sản phẩm cuối: IT vs SEO ── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .compare>div {
+      min-width: 0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+    }
+
+    .compare .it {
+      background: var(--surface);
+    }
+
+    .compare .seo {
+      background: color-mix(in srgb, var(--surface) 90%, var(--teal) 10%);
+      border-color: color-mix(in srgb, var(--border) 40%, var(--teal) 60%);
+    }
+
+    .compare h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      color: var(--text-bright);
+    }
+
+    .compare .sub {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .compare ul {
+      margin: 0;
+      padding-left: 1.15em;
+      font-size: 15px;
+    }
+
+    .compare li {
+      margin-bottom: 5px;
+    }
+
+    .check {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-bright);
+      font-size: 14px;
+    }
+
+    .check b {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* ── Dòng thời gian song song ── */
+    .lanes {
+      margin: 26px 0 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px 14px;
+    }
+
+    .lanes-axis {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .lanes-axis .ticks {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .lane {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 10px;
+    }
+
+    .lane-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-bright);
+      padding-right: 12px;
+      line-height: 1.3;
+    }
+
+    .lane-name small {
+      display: block;
+      font-weight: 400;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .lane-track {
+      position: relative;
+      height: 26px;
+      background: var(--surface2);
+      border-radius: 6px;
+    }
+
+    .lane-bar {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .lane-bar--a {
+      background: var(--teal);
+    }
+
+    .lane-bar--b {
+      background: var(--accent);
+    }
+
+    .lanes-note {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    /* ── Bảng kết quả nhỏ ── */
+    .mini {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin: 10px 0 4px;
+    }
+
+    .mini th {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border-bright);
+      font-weight: 600;
+    }
+
+    .mini td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      overflow-wrap: anywhere;
+    }
+
+    .mini tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mini .ok {
+      color: var(--green);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .mini .hl {
+      background: var(--amber-dim);
+    }
+
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px 10px;
+      margin: 18px 0 24px;
+      overflow-x: auto;
+    }
+
+    .table-cap {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding: 6px 10px 8px;
+    }
+
+    /* ── Hành trình lấy kết quả ── */
+    .journey {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 24px 0;
+    }
+
+    .journey>div {
+      min-width: 0;
+      border-radius: 12px;
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .journey .want {
+      background: color-mix(in srgb, var(--surface) 90%, var(--teal) 10%);
+      border-color: color-mix(in srgb, var(--border) 40%, var(--teal) 60%);
+    }
+
+    .journey h4 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: var(--text-bright);
+    }
+
+    .journey ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: j;
+    }
+
+    .journey li {
+      counter-increment: j;
+      position: relative;
+      padding: 0 0 12px 34px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .journey li::before {
+      content: counter(j);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface2);
+      color: var(--text-dim);
+      border: 1px solid var(--border-bright);
+    }
+
+    .journey .want li::before {
+      background: var(--teal);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .journey .count {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px dashed var(--border-bright);
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+
+    .path {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      background: var(--surface2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      overflow-wrap: anywhere;
+      color: var(--text-bright);
+    }
+
+    /* ── Kịch bản task CMS / hình ── */
+    .scen {
+      margin: 22px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .scen-head {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .scen-head b {
+      font-size: 16px;
+      color: var(--text-bright);
+    }
+
+    .scen-head span {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    .scen-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .scen-body>div {
+      min-width: 0;
+      padding: 14px 20px 16px;
+      font-size: 15px;
+    }
+
+    .scen-body>div+div {
+      border-left: 1px solid var(--border);
+    }
+
+    .scen-body .k {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .scen-body ul {
+      margin: 0;
+      padding-left: 1.1em;
+    }
+
+    .scen-body li {
+      margin-bottom: 4px;
+    }
+
+    /* ── Terminal giả lập ── */
+    .term-box {
+      background: #1b1916;
+      color: #e8e0d4;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.75;
+      margin: 18px 0;
+      overflow-x: auto;
+    }
+
+    .term-box .c {
+      color: #9b917f;
+    }
+
+    .term-box .p {
+      color: #e8743f;
+    }
+
+    .term-box .s {
+      color: #8fd18f;
+    }
+
+    .term-box .bar {
+      margin-top: 10px;
+      background: #5f9b5f;
+      color: #10200f;
+      padding: 2px 8px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    /* ── Bài học thật ── */
+.lessons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0 26px; }
+.lesson { min-width: 0; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--amber); border-radius: 8px; padding: 14px 16px; font-size: 15px; line-height: 1.55; }
+.lesson b { display: block; color: var(--text-bright); margin-bottom: 4px; }
+.lesson span { color: var(--text-dim); font-size: 14px; }
+
+/* ── Các lớp "bộ não" ── */
+.stack { margin: 26px 0; display: grid; gap: 8px; }
+.layer { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+.layer-n { font-family: var(--font-display); font-size: 30px; font-weight: 600; color: var(--accent); line-height: 1; text-align: center; }
+.layer-t { font-weight: 700; color: var(--text-bright); font-size: 16px; margin-bottom: 2px; }
+.layer-d { font-size: 14.5px; color: var(--text); line-height: 1.5; }
+.layer-d i { color: var(--text-dim); font-style: normal; }
+.layer-m { font-family: var(--font-mono); font-size: 12px; color: var(--text-dim); text-align: right; white-space: nowrap; }
+.layer-m b { display: block; font-family: var(--font-display); font-size: 22px; color: var(--text-bright); font-weight: 600; }
+.layer--top { background: color-mix(in srgb, var(--surface) 90%, var(--teal) 10%); border-color: color-mix(in srgb, var(--border) 40%, var(--teal) 60%); }
+.stack-note { font-size: 13px; color: var(--text-dim); }
+
+/* ── Vòng lặp học ── */
+.loop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 22px 0 10px; counter-reset: lp; }
+.loop-step { counter-increment: lp; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px 16px; position: relative; }
+.loop-step::before { content: counter(lp); font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); display: block; margin-bottom: 4px; }
+.loop-step b { display: block; color: var(--text-bright); font-size: 15px; margin-bottom: 4px; line-height: 1.35; }
+.loop-step p { font-size: 14px; color: var(--text-dim); margin: 0; line-height: 1.5; }
+.loop-step--human { border-color: color-mix(in srgb, var(--border) 30%, var(--accent) 70%); background: color-mix(in srgb, var(--surface) 92%, var(--accent) 8%); }
+.loop-step--human::after { content: 'Người làm'; position: absolute; top: 12px; right: 12px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+.loop-back { font-size: 14px; color: var(--text-dim); margin: 6px 0 24px; }
+.loop-back b { color: var(--accent); }
+
+/* ── Phần đang viết ── */
+    .upnext {
+      margin-top: 72px;
+      padding: 22px 24px;
+      border: 1px dashed var(--border-bright);
+      border-radius: 12px;
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    .upnext b {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .upnext ol {
+      margin: 0;
+      padding-left: 1.3em;
+    }
+
+    /* ── Hiện dần khi tải ── */
+    .fade {
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeUp .5s ease forwards;
+    }
+
+    .fade:nth-child(2) {
+      animation-delay: .05s;
+    }
+
+    .fade:nth-child(3) {
+      animation-delay: .1s;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* ── Màn hình hẹp ── */
+    @media (max-width: 1000px) {
+      .wrap {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 0 20px 72px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        display: flex;
+        gap: 4px;
+        align-items: center;
+        overflow-x: auto;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 10px 52px 10px 20px;
+        margin: 0 -20px 36px;
+        grid-row: auto;
+        min-width: 0;
+      }
+
+      .toc-title,
+      .toc .pending small {
+        display: none;
+      }
+
+      .toc a,
+      .toc .pending {
+        white-space: nowrap;
+        border-left: none;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+
+      .toc a.active {
+        border-left: none;
+      }
+
+      .main {
+        padding-top: 8px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .flow {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .step {
+        margin-right: 0;
+      }
+
+      .step:not(:last-child)::after {
+        content: '↓';
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -21px;
+        transform: translateX(-50%);
+      }
+
+      .split {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .split-gap {
+        writing-mode: horizontal-tb;
+        padding: 4px 0;
+      }
+
+      .facts,
+      .compare,
+      .journey,
+      .scen-body {
+        grid-template-columns: 1fr;
+      }
+
+      .scen-body>div+div {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+
+      .lane,
+      .lanes-axis {
+        grid-template-columns: 96px 1fr;
+      }
+
+      .lane-bar {
+        padding: 0 6px;
+        font-size: 10px;
+      }
+
+      .lessons, .loop { grid-template-columns: 1fr; }
+      .layer { grid-template-columns: 40px minmax(0, 1fr); }
+      .layer-m { grid-column: 2; text-align: left; }
+      .layer-m b { display: inline; font-size: 18px; margin-right: 6px; }
+
+      .quote p {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <button class="theme-toggle" id="themeToggle" title="Đổi giao diện sáng/tối"
+    aria-label="Đổi giao diện sáng/tối"></button>
+
+  <div class="wrap">
+
+    <nav class="toc" id="toc" aria-label="Mục lục">
+      <div class="toc-title">Mục lục</div>
+      <a href="#s1">1. Bối cảnh khi tìm hiểu</a>
+      <a href="#s2">2. Firstmate làm ra để làm gì</a>
+      <a href="#s3">3. Test thực tế</a>
+      <a href="#s4">4. Agent cần được dạy</a>
+      <div class="pending">5. Ghi nhận góp ý<small>đang viết</small></div>
+      <div class="pending">6. Đề xuất<small>đang viết</small></div>
+    </nav>
+
+    <main class="main">
+      <header>
+        <p class="eyebrow fade">Nhận định sau khi test · Firstmate</p>
+        <h1 class="fade">Firstmate rất mạnh cho lập trình, nhưng <em>chưa hợp</em> với việc SEO hằng ngày</h1>
+        <p class="lead fade">Em đã test repo Firstmate anh Hưng gửi trên một vài task, đồng thời tìm hiểu xem bản chất
+          repo này được làm ra để phục vụ việc gì. Em không có report chi tiết như anh Khoa, nhưng có một số nhận định
+          dưới đây.</p>
+        <p class="byline">Viết cho người không chuyên kỹ thuật đọc được. Các phần sau đang được bổ sung dần.</p>
+      </header>
+
+      <!-- ───────── Phần 1 ───────── -->
+      <section class="sec" id="s1">
+        <div class="sec-num"><b>1</b> Bối cảnh</div>
+        <h2>Bối cảnh của em khi tìm hiểu Firstmate</h2>
+
+        <p>Trước đây em cũng đã tìm hiểu trong các group và đọc khá nhiều bài về việc dùng <strong>Multi Agent</strong>,
+          tức là cho nhiều AI cùng chia nhau làm việc.</p>
+
+        <div class="callout callout--pain">
+          <div class="callout__title">Điểm vướng lớn nhất</div>
+          <p>Có rất nhiều repo cho phép dùng multi agent giống Firstmate. Nhưng gần như tất cả đều <strong>do dân
+              IT/Tech làm ra</strong>, và cuối cùng đều phục vụ cho <strong>việc lập trình</strong>. Khi đem áp vào công
+            việc của em thì rất khó vừa.</p>
+        </div>
+
+        <div class="split" role="group" aria-label="So sánh mục đích repo và công việc SEO">
+          <div class="split-card" style="--c: var(--accent)">
+            <div class="split-label" style="--c: var(--accent)">Các repo multi agent</div>
+            <h4>Làm ra để viết phần mềm</h4>
+            <ul>
+              <li>Sửa code, thêm tính năng</li>
+              <li>Chạy kiểm tra code tự động</li>
+              <li>Duyệt rồi gộp code vào sản phẩm</li>
+            </ul>
+          </div>
+          <div class="split-gap" aria-hidden="true">lệch</div>
+          <div class="split-card split-card--seo">
+            <div class="split-label" style="--c: var(--teal)">Task chính của em</div>
+            <h4>Làm ra nội dung và dữ liệu</h4>
+            <ul>
+              <li>Viết bài, đăng bài lên CMS</li>
+              <li>Làm hình, SEO hình</li>
+              <li>Phân tích dữ liệu, làm báo cáo</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Điều này cũng giống tin nhắn anh An chia sẻ về cách IT đang dùng Firstmate:</p>
+
+        <blockquote class="quote">
+          <p>“Tạo yêu cầu → Firstmate đọc → làm → người review và merge.”</p>
+          <cite>Quy trình code hiện tại của IT, theo anh An</cite>
+        </blockquote>
+
+        <p>Em sẽ giải thích rõ hơn quy trình này ở phần dưới.</p>
+      </section>
+
+      <!-- ───────── Phần 2 ───────── -->
+      <section class="sec" id="s2">
+        <div class="sec-num"><b>2</b> Mục đích</div>
+        <h2>Những gì em hiểu về mục đích của Firstmate</h2>
+
+        <p>Tìm hiểu sâu hơn thì em thấy luồng đi của Firstmate được thiết kế cho việc lập trình rất rõ ràng:</p>
+
+        <div class="flow" role="list" aria-label="Luồng làm việc của Firstmate">
+          <div class="step" role="listitem">
+            <div class="step-n">BƯỚC 1</div>
+            <div class="step-t">Tạo yêu cầu</div>
+            <div class="step-d">Người dùng giao việc cần làm</div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-n">BƯỚC 2</div>
+            <div class="step-t">Firstmate đọc</div>
+            <div class="step-d">Chia việc cho từng agent con</div>
+          </div>
+          <div class="step" role="listitem">
+            <div class="step-n">BƯỚC 3</div>
+            <div class="step-t">Làm trên bản sao code riêng</div>
+            <div class="step-d">Mỗi agent sửa code ở một bản sao để khỏi giẫm lên nhau</div>
+          </div>
+          <div class="step step--code" role="listitem">
+            <div class="step-n">BƯỚC 4</div>
+            <div class="step-t">Review và merge code</div>
+            <div class="step-d">Người duyệt code, đạt thì gộp vào sản phẩm</div>
+          </div>
+        </div>
+        <p class="flow-note">Bước cuối luôn là review và merge code, đúng như quy trình anh An chia sẻ.</p>
+
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-k">Mỗi task một bản sao code</div>
+            <p>Mỗi task chạy trên một bản sao code riêng (repo gọi là <span class="term">worktree</span>), để nhiều
+              agent cùng sửa code một lúc mà không đụng nhau.</p>
+          </div>
+          <div class="fact">
+            <div class="fact-k">Chỉ có 2 dạng task</div>
+            <ul>
+              <li><span class="term">ship</span>: sửa code rồi giao</li>
+              <li><span class="term">scout</span>: điều tra rồi viết báo cáo</li>
+            </ul>
+          </div>
+          <div class="fact fact--wide">
+            <div class="fact-k">3 cách giao kết quả, cả 3 đều là cách đưa code về</div>
+            <ol>
+              <li>Mở <span class="term">PR</span>: gửi đề nghị gộp code để người khác duyệt.</li>
+              <li>Chạy qua bộ kiểm tra code tự động (<span class="term">no-mistakes</span>) rồi mới gửi.</li>
+              <li>Gộp thẳng vào code trên máy (<span class="term">local-only</span>).</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="callout callout--key">
+          <div class="callout__title">Vì sao quy trình này hợp với IT</div>
+          <p>Sản phẩm cuối của IT là <strong>code</strong>, nên quy trình tự nhiên là: duyệt xem code đúng chưa, chạy
+            kiểm tra, rồi gộp vào.</p>
+        </div>
+
+        <h3>Em đã thật sự làm theo quy trình này khi build tool</h3>
+        <p>Em nhận định như vậy không chỉ vì đọc tài liệu. Em hiểu và đã làm theo đúng quy trình này khi tự build tool,
+          ví dụ <strong>extension check rank</strong> em đang dùng: mỗi lần sửa là một lần đẩy code lên GitHub để quản
+          lý.</p>
+
+        <figure class="shot">
+          <img src="assets/check-rank-commits.webp" width="1195" height="995" loading="lazy"
+            alt="Lịch sử các lần đẩy code lên GitHub của extension check rank, từ 30/08 đến 18/09/2026">
+          <figcaption><b>Những lần đẩy code lên GitHub khi build extension check rank.</b> Mỗi dòng là một lần sửa code
+            được ghi lại, có thể xem lại hoặc quay về khi cần. Đây chính là kiểu việc Firstmate hỗ trợ tốt.</figcaption>
+        </figure>
+
+        <h3>Còn sản phẩm cuối của task SEO thì khác hẳn</h3>
+
+        <div class="compare">
+          <div class="it">
+            <h4>Task lập trình</h4>
+            <div class="sub">Việc Firstmate được làm ra để phục vụ</div>
+            <ul>
+              <li>Code của một tính năng hay tool</li>
+              <li>Lưu và quản lý trên GitHub</li>
+            </ul>
+            <div class="check"><b>Thứ cần kiểm</b>Code có chạy đúng, có qua được bộ kiểm tra không</div>
+          </div>
+          <div class="seo">
+            <h4>Task SEO của em</h4>
+            <div class="sub">Việc làm hằng ngày</div>
+            <ul>
+              <li>Một bài viết đăng trên CMS</li>
+              <li>Một bộ ảnh đã SEO</li>
+              <li>Link chèn vào bài</li>
+              <li>Dữ liệu ghi vào Sheet, file crawl, báo cáo số liệu…</li>
+            </ul>
+            <div class="check"><b>Thứ cần kiểm</b>Nội dung đúng chưa, link trỏ đúng trang chưa, ảnh có đúng sản phẩm
+              không</div>
+          </div>
+        </div>
+
+        <p>Những sản phẩm SEO này <strong>không có bước “merge”</strong>, cũng không cần GitHub để quản lý. Cái cần kiểm
+          là nội dung có đúng không, chứ không phải code có chạy qua kiểm tra hay không.</p>
+
+        <div class="callout callout--pain">
+          <div class="callout__title">Kết luận phần 2</div>
+          <p>Phần mạnh nhất của Firstmate là chia nhánh code, review và merge. Phần này <strong>gần như không áp vào
+              được</strong> việc SEO của em.</p>
+        </div>
+      </section>
+
+      <!-- ───────── Phần 3 ───────── -->
+      <section class="sec" id="s3">
+        <div class="sec-num"><b>3</b> Test thực tế</div>
+        <h2>Agent làm đúng việc. Vướng ở khâu nhận kết quả.</h2>
+
+        <p>Em giao cho Firstmate một số task SEO trên một project tập, dữ liệu public. Có hai điều em xác nhận được
+          trước tiên.</p>
+
+        <h3>Multi agent chạy thật, và chạy song song</h3>
+        <p>Firstmate tự chia việc cho nhiều agent, mỗi agent một cửa sổ riêng. Hai việc dưới đây chạy <strong>chồng lên
+            nhau về thời gian</strong>, không phải xong việc này mới tới việc kia:</p>
+
+        <div class="lanes" role="img" aria-label="Hai việc chạy song song từ 10:20 đến 10:27">
+          <div class="lanes-axis"><span></span>
+            <div class="ticks">
+              <span>10:20</span><span>10:22</span><span>10:24</span><span>10:26</span><span>10:28</span>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-name">Crawl 10 URL<small>agent 1</small></div>
+            <div class="lane-track">
+              <div class="lane-bar lane-bar--a" style="left:0%; width:75%">10:20–10:26</div>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-name">Làm sạch keyword<small>agent 2 · Antigravity</small></div>
+            <div class="lane-track">
+              <div class="lane-bar lane-bar--b" style="left:50%; width:37.5%">10:24–10:27</div>
+            </div>
+          </div>
+          <div class="lanes-note">Thời gian lấy từ file trạng thái và báo cáo Firstmate ghi lại, ngày 30/09/2026.</div>
+        </div>
+
+        <h3>Agent làm đúng việc được giao</h3>
+        <div class="table-wrap">
+          <table class="mini">
+            <thead>
+              <tr>
+                <th>Việc</th>
+                <th>Kết quả</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Crawl 10 trang danh mục laptop: title, H1, meta, canonical</td>
+                <td>Đủ 10/10 trang. Còn tự phát hiện <span class="path">/laptop-hp</span> đang chuyển hướng về trang
+                  laptop chung</td>
+                <td class="ok">Đúng</td>
+              </tr>
+              <tr>
+                <td>Làm sạch 20 keyword mẫu: bỏ trùng, gắn brand, loại keyword không phải laptop</td>
+                <td>Còn 14 keyword. Đã gộp các dòng trùng, loại tai nghe, chuột, máy lạnh</td>
+                <td class="ok">Đúng</td>
+              </tr>
+              <tr>
+                <td>Research cách Google hiển thị AI Overview</td>
+                <td>Báo cáo có dẫn nguồn tài liệu Google</td>
+                <td class="ok">Đạt</td>
+              </tr>
+              <tr>
+                <td>Thử cho Antigravity điều khiển trình duyệt</td>
+                <td>Mở trang, đọc nội dung, chụp màn hình được</td>
+                <td class="ok">Được</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout--key">
+          <div class="callout__title">Phần này em ghi nhận</div>
+          <p>Về khả năng thì đúng như anh An nói: Firstmate <strong>làm được</strong>, chia được nhiều agent, và agent
+            làm đúng đề. Vấn đề nằm ở <strong>những gì xảy ra sau khi agent làm xong</strong>.</p>
+        </div>
+
+        <h3>Sau khi agent làm xong: kết quả bị “cất” trong nhánh code</h3>
+        <p>Việc làm sạch keyword làm xong chỉ trong khoảng 3 phút. Nhưng file kết quả <strong>không nằm trong thư mục
+            project</strong> để em mở ra dùng ngay. Agent báo:</p>
+
+        <div class="term-box" aria-label="Thông báo của agent khi làm xong">
+          <span class="s">done</span>: ready in branch <span class="p">fm/seo-keyword-clean</span><br>
+          <span class="c"># file nằm ở: ~/.treehouse/seo-sandbox-d64f84/2/seo-sandbox/output/keywords-clean.csv</span>
+        </div>
+
+        <p>Tức là file đang nằm trong một <strong>nhánh code riêng</strong>, ở một thư mục ẩn trên máy. Muốn file vào
+          đúng project thì phải qua bước <strong>review và merge</strong>, đúng như quy trình code ở phần 2.</p>
+
+        <div class="journey">
+          <div>
+            <h4>Firstmate: để lấy được 1 file CSV</h4>
+            <ol>
+              <li>Agent làm xong, báo “ready in branch <span class="path">fm/…</span>”</li>
+              <li>Mình phải biết nhánh là gì, file đang nằm ở thư mục ẩn nào</li>
+              <li>Review thay đổi trong nhánh (xem từng dòng code và file thêm vào)</li>
+              <li>Đồng ý để Firstmate merge vào project</li>
+              <li>Mở file kết quả ra dùng</li>
+            </ol>
+            <div class="count">5 bước, có 3 bước cần hiểu git</div>
+          </div>
+          <div class="want">
+            <h4>Việc SEO cần</h4>
+            <ol>
+              <li>Agent làm xong, file nằm ngay trong thư mục task (hoặc đã ghi thẳng vào Sheet), nhiều khi chỉ cần
+                check trực tiếp xem bài đã lên chưa, link đã chèn chưa, nội dung đã viết oke chưa,... Nói chung là kiểm
+                tra trực tiếp trong nền tảng mình đang làm (CMS, Sheet, Docs...) rồi ra lệnh sửa cho oke.</li>
+              <li>Mở ra kiểm nội dung đúng chưa</li>
+            </ol>
+            <div class="count">2 bước, không cần biết git</div>
+          </div>
+        </div>
+
+        <p>Với code, bước review và merge là bắt buộc, vì code sai có thể làm hỏng cả sản phẩm. Còn với một file keyword
+          hay một báo cáo crawl, bước này chỉ làm <strong>task dài hơn và rườm rà hơn</strong> mà không giúp kiểm nội
+          dung tốt hơn.</p>
+
+        <h3>Nếu là task đăng bài CMS, làm hình thì sao?</h3>
+        <p>Hai loại task này em chưa chạy thử trên Firstmate. Đây là em suy ra từ cách Firstmate vận hành ở trên. Kết
+          quả của chúng thậm chí <strong>không nằm trong code</strong> để mà merge:</p>
+
+        <div class="scen">
+          <div class="scen-head"><b>Đăng bài lên CMS</b><span>Suy luận</span></div>
+          <div class="scen-body">
+            <div>
+              <div class="k">Kết quả thật của task</div>
+              <ul>
+                <li>Bài viết đã nằm trên CMS, hiện trên website</li>
+                <li>Không phải một file trong project</li>
+              </ul>
+            </div>
+            <div>
+              <div class="k">Khi đi qua Firstmate</div>
+              <ul>
+                <li>Bước review và merge chỉ kiểm được file trong nhánh, không kiểm được bài đã đăng trên CMS</li>
+                <li>Hoặc agent chỉ soạn bài vào nhánh, merge xong vẫn phải có người đăng lên CMS, thành ra thêm bước
+                </li>
+                <li>Hoặc bỏ qua bước review, tức là bỏ luôn phần an toàn mạnh nhất của Firstmate</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="scen">
+          <div class="scen-head"><b>Làm hình, SEO hình</b><span>Suy luận</span></div>
+          <div class="scen-body">
+            <div>
+              <div class="k">Kết quả thật của task</div>
+              <ul>
+                <li>Bộ ảnh đúng sản phẩm, đúng tên file, đúng alt</li>
+                <li>Ảnh được đưa lên CMS cùng bài viết</li>
+              </ul>
+            </div>
+            <div>
+              <div class="k">Khi đi qua Firstmate</div>
+              <ul>
+                <li>Review code không “nhìn” được ảnh. Muốn biết ảnh đúng hay sai vẫn phải mở từng ảnh ra xem</li>
+                <li>Ảnh nằm trong nhánh code, merge xong vẫn phải đem lên CMS</li>
+                <li>Bước merge không làm việc kiểm ảnh nhanh hơn</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3>Muốn nói chuyện tiếp với agent đang làm: phải qua màn hình lệnh</h3>
+        <p>Trong lúc agent chạy, nếu em muốn nhắc thêm một ý hay sửa hướng (ví dụ “bỏ thêm keyword máy cũ”, “đổi tiêu đề
+          bài”), em không chat được như bình thường. Mỗi agent chạy trong một cửa sổ của <strong>tmux</strong>, phần mềm
+          chia nhiều cửa sổ trong màn hình lệnh. Muốn vào đúng agent thì phải làm như sau:</p>
+
+        <div class="term-box" aria-label="Các bước để nói chuyện với một agent đang chạy">
+          <span class="c"># 1. Mở app Terminal, gõ lệnh để vào lại phiên làm việc</span><br>
+          <span class="p">$</span> tmux attach -t firstmate<br>
+          <span class="c"># 2. Bấm Control+B, buông ra, bấm W để xem danh sách cửa sổ</span><br>
+          <span class="c"># 3. Dùng mũi tên chọn đúng cửa sổ agent, ví dụ fm-seo-keyword-clean, rồi Enter</span><br>
+          <span class="c"># 4. Gõ lời nhắn vào. Xong thì Control+B, buông ra, bấm D để thoát</span><br>
+          <span class="bar">[firstmate] 0:firstmate 1:fm-seo-crawl-audit 2:fm-seo-keyword-clean*</span>
+        </div>
+
+        <p>Với người quen màn hình lệnh thì đây là chuyện nhỏ. Nhưng phần lớn anh chị em làm SEO chỉ quen <strong>khung
+            chat</strong>. Nhớ tổ hợp phím, phân biệt cửa sổ, đọc báo lỗi tiếng Anh kỹ thuật: mỗi bước đều là một chỗ dễ
+          bị kẹt. Bấm nhầm (ví dụ Control+C) còn có thể dừng luôn agent đang làm.</p>
+
+        <div class="callout callout--pain">
+          <div class="callout__title">Kết luận phần 3</div>
+          <p>Firstmate <strong>chạy multi agent được thật</strong>, và agent <strong>làm đúng việc</strong>. Nhưng khâu
+            sau đó (nhận kết quả, review, merge, nói chuyện tiếp với agent) được thiết kế cho người làm code. Với task
+            SEO, khâu này làm mỗi task <strong>dài và rườm rà hơn</strong>, và người không biết code khó tự xoay xở.</p>
+        </div>
+      </section>
+
+      <!-- ───────── Phần 4 ───────── -->
+      <section class="sec" id="s4">
+        <div class="sec-num"><b>4</b> Agent cần được dạy</div>
+        <h2>Để agent ngày càng hiểu việc: cần được dạy và ghi lại</h2>
+
+        <p>Em rất tâm đắc với hướng <strong>cho AI học từ ví dụ</strong>: đưa nguyên liệu đầu vào và thành phẩm mẫu, để AI tự rút ra cách làm, rồi áp dụng cho hàng loạt việc sau. Thực tế em cũng đang làm theo hướng này. Qua hơn 130 task làm cùng AI, em rút ra thêm 3 điều giúp cách làm này chạy bền và chính xác hơn:</p>
+
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-k">1. Công thức cần được ghi lại</div>
+            <p>Mỗi lần mở phiên mới, AI giống một <strong>nhân viên mới</strong>: công thức tìm ra hôm qua là quên sạch, trừ khi công thức đó được <strong>ghi ra thành file</strong> để lần sau đọc lại.</p>
+          </div>
+          <div class="fact">
+            <div class="fact-k">2. Cần người làm nghề soát chi tiết</div>
+            <p>AI rất giỏi làm ra thứ <strong>trông giống</strong> thành phẩm. Nhưng cái đúng của việc SEO nằm ở chi tiết: giá, thông số, luật nội bộ. Mấy thứ này nhìn bề ngoài không thấy.</p>
+          </div>
+          <div class="fact fact--wide">
+            <div class="fact-k">3. Cần cách kiểm độc lập</div>
+            <p>AI tự chấm bài của chính nó thường dễ dãi. Muốn biết đúng thật phải có <strong>cách kiểm độc lập</strong>: đọc lại từ CMS, so với Sheet, xem file bằng chứng.</p>
+          </div>
+        </div>
+
+        <h3>Những chi tiết em đã phát hiện và dạy lại cho agent</h3>
+        <p>Dưới đây là vài ví dụ thật trong quá trình làm. AI làm ra kết quả trông rất hợp lý, nhưng sai, và nó không tự nhận ra:</p>
+
+        <div class="lessons">
+          <div class="lesson"><b>Giá Apple lệch đúng 9.000đ</b><span>Apple ghi giá đuôi .999.000đ, mình bán đuôi .990.000đ. Đây là quy ước thật, nhưng AI chấm là “sai giá”.</span></div>
+          <div class="lesson"><b>40W và 60W là cùng một củ sạc</b><span>Hai con số xuất hiện ở hai chỗ khác nhau, AI tưởng bài viết mâu thuẫn và đòi sửa.</span></div>
+          <div class="lesson"><b>Pin iPhone bản Việt Nam khác bản Mỹ</b><span>AI lấy số liệu trang Apple Mỹ cho bài tiếng Việt, nên sai thông số với máy bán ở Việt Nam.</span></div>
+          <div class="lesson"><b>Rank có thể là của trang khác</b><span>Số rank trong Search Console có lúc là của trang Điện máy XANH. Không loại ra thì tính nhầm công cho trang khác.</span></div>
+          <div class="lesson"><b>Ghi xong phải đợi rồi mới xoá cache</b><span>Xoá cache ngay sau khi đăng bài thì trang vẫn hiện bài cũ. Phải đợi khoảng 1 phút.</span></div>
+          <div class="lesson"><b>Agent tự báo “đạt” chưa chắc đã đạt</b><span>Có lần agent ghi Sheet đúng, nhưng phần tự báo cáo lại khai tỉ lệ sai nặng. Phải kiểm bằng dữ liệu thật.</span></div>
+        </div>
+
+        <p>Những chi tiết này cần <strong>người làm nghề phát hiện</strong>, rồi <strong>ghi lại thành luật</strong>. Từ đó về sau agent nào làm việc này cũng tự áp dụng đúng.</p>
+
+        <h3>Thứ thật sự làm agent hiểu việc: một “bộ não” xây dần</h3>
+        <p>Cách dễ hình dung nhất: agent là một nhân viên rất giỏi, nhưng sáng nào cũng mất trí nhớ. Muốn người đó làm đúng thì phải có sẵn sổ tay, nội quy, công thức từng món, sổ ghi lỗi, và người kiểm hàng. Đây là những gì em đã xây trong hệ thống làm việc hiện tại:</p>
+
+        <div class="stack">
+          <div class="layer">
+            <div class="layer-n">1</div>
+            <div><div class="layer-t">Sổ tay công việc</div><div class="layer-d">Tài liệu về hệ thống, KPI, cách đo số liệu, quy trình từng mảng. <i>Giúp agent hiểu mình đang làm việc ở đâu, vì sao làm.</i></div></div>
+            <div class="layer-m"><b>~190</b>tài liệu</div>
+          </div>
+          <div class="layer">
+            <div class="layer-n">2</div>
+            <div><div class="layer-t">Nội quy đọc đầu tiên</div><div class="layer-d">File CLAUDE.md và AGENTS.md: mỗi phiên agent đọc trước khi làm. Làm ở thư mục nào, dùng tài khoản nào, cấm làm gì. <i>Giống bản nội quy dán ở cửa phòng.</i></div></div>
+            <div class="layer-m"><b>~1.000</b>dòng</div>
+          </div>
+          <div class="layer">
+            <div class="layer-n">3</div>
+            <div><div class="layer-t">Luật ràng buộc, rào chắn tự động</div><div class="layer-d">Tự dừng hỏi người trước khi gọi công cụ tốn tiền, không cho đụng tài khoản đăng nhập, không có bằng chứng thì không tính là xong. <i>AI có quên thì máy vẫn chặn.</i></div></div>
+            <div class="layer-m">chạy tự động</div>
+          </div>
+          <div class="layer">
+            <div class="layer-n">4</div>
+            <div><div class="layer-t">Skill: công thức cho từng việc</div><div class="layer-d">Mỗi việc lặp lại có một bộ công thức riêng: đăng bài CMS, viết infobox, chèn link nội bộ, làm hình, SEO hình, đo rank, báo cáo… <i>Đây chính là “công thức” AI học được từ ví dụ, đã được viết ra và kiểm lại.</i></div></div>
+            <div class="layer-m"><b>34</b>skill SEO</div>
+          </div>
+          <div class="layer">
+            <div class="layer-n">5</div>
+            <div><div class="layer-t">Sổ bài học, trí nhớ</div><div class="layer-d">Mỗi lần agent sai, hoặc em sửa nó, cái sai được ghi lại thành ghi nhớ hoặc thành bài học trong skill. Ví dụ riêng skill viết bài top sản phẩm đã có 583 dòng bài học. <i>Agent không lặp lại lỗi cũ.</i></div></div>
+            <div class="layer-m"><b>90</b>ghi nhớ</div>
+          </div>
+          <div class="layer layer--top">
+            <div class="layer-n">6</div>
+            <div><div class="layer-t">Nghiệm thu bằng bằng chứng</div><div class="layer-d">Kết quả phải kiểm được: đọc lại bài từ CMS, so từng dòng với Sheet, xem trang live. <i>Không tin lời agent tự báo.</i></div></div>
+            <div class="layer-m">mỗi task</div>
+          </div>
+        </div>
+        <p class="stack-note">Số liệu đếm trong thư mục làm việc của em, ngày 02/10/2026. Bộ này em xây dần từ tháng 6/2026, qua 135 task.</p>
+
+        <h3>Áp vào một việc cụ thể: làm bảng thông số kỹ thuật</h3>
+        <p>Ví dụ: cho AI tài liệu của hãng cùng bảng thông số kỹ thuật đã hoàn thiện, để AI học ra cách làm. Theo em, quy trình nên đi thành một vòng như dưới đây. Hai bước có người tham gia giúp công thức ngày càng chuẩn hơn:</p>
+
+        <div class="loop">
+          <div class="loop-step"><b>Đưa ví dụ</b><p>Tài liệu hãng (nguyên liệu) và bảng thông số chuẩn (cái bánh)</p></div>
+          <div class="loop-step"><b>AI rút ra công thức nháp</b><p>Tự thử nhiều cách cho tới khi ra kết quả khớp mẫu</p></div>
+          <div class="loop-step loop-step--human"><b>Người làm nghề kiểm và sửa</b><p>Chỗ nào chỉ “trông giống” mà sai thì chỉ ra, sửa luật</p></div>
+          <div class="loop-step"><b>Ghi thành skill</b><p>Công thức được lưu lại thành file, phiên sau agent đọc lại được</p></div>
+          <div class="loop-step"><b>Chạy thật hàng loạt</b><p>Đưa bộ tài liệu mới là ra bảng thông số</p></div>
+          <div class="loop-step loop-step--human"><b>Gặp lỗi mới thì ghi bài học</b><p>Thêm vào sổ bài học để lần sau không sai lại</p></div>
+        </div>
+        <p class="loop-back"><b>↻</b> Quay lại bước 4. Mỗi vòng, skill tốt hơn một chút. Agent ngày càng hiểu việc hơn là nhờ mỗi lần làm đều được ghi lại thành công thức và bài học.</p>
+
+        <div class="callout callout--key">
+          <div class="callout__title">Kết luận phần 4</div>
+          <p>Multi agent giúp <strong>nhiều việc chạy cùng lúc</strong>. Còn agent <strong>làm đúng việc</strong> là nhờ bộ sổ tay, luật, skill và bài học được xây dần. Bộ này càng đầy đủ thì càng nhiều agent cùng làm đúng.</p>
+          <p>Firstmate cho mình phần “nhiều người cùng làm”. Còn phần “hiểu việc SEO” thì dùng Firstmate hay công cụ nào cũng phải tự xây. Đó là phần tốn công nhất, và cũng là phần giá trị nhất.</p>
+        </div>
+      </section>
+
+      <div class="upnext">
+        <b>Các phần tiếp theo · đang viết</b>
+        <ol start="5">
+          <li>Ghi nhận các góp ý về Firstmate</li>
+          <li>Đề xuất</li>
+        </ol>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('themeToggle');
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) { }
+      var initial = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      if (saved) document.documentElement.setAttribute('data-theme', initial);
+      toggle.textContent = initial === 'dark' ? '☀' : '☾';
+      toggle.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('data-theme')
+          || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        var next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) { }
+        toggle.textContent = next === 'dark' ? '☀' : '☾';
+      });
+
+      // Tô đậm mục đang đọc trong mục lục
+      var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+      var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+          });
+        }, { rootMargin: '-30% 0px -60% 0px' });
+        secs.forEach(function (s) { if (s) io.observe(s); });
+      }
+    })();
+  </script>
+</body>
+
+</html>
