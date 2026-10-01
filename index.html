@@ -1865,14 +1865,14 @@
           <div class="step step--code" role="listitem">
             <div class="step-n">BƯỚC 4</div>
             <div class="step-t">Review và merge code</div>
-            <div class="step-d">Người duyệt code, đạt thì gộp vào sản phẩm</div>
+            <div class="step-d">Kiểm tra code (người hoặc bộ kiểm tự động), đạt thì gộp vào sản phẩm</div>
           </div>
         </div>
-        <p class="flow-note">Bước cuối luôn là review và merge code, đúng như quy trình anh An chia sẻ.</p>
+        <p class="flow-note">Với việc sửa code, bước cuối là review và merge, đúng như quy trình anh An chia sẻ. Việc điều tra thì kết thúc bằng một bản báo cáo.</p>
 
         <div class="diagram" role="img" aria-label="Sơ đồ: người dùng giao việc cho Firstmate, Firstmate chia cho 3 agent, mỗi agent làm trên bản sao code riêng và trả về một nhánh code, rồi người duyệt review và merge vào sản phẩm">
           <div class="diagram-cap">Mô hình multi agent của Firstmate</div>
-          <div class="dnode">Người dùng<small>giao việc trong màn hình lệnh</small></div>
+          <div class="dnode">Người dùng<small>giao việc bằng chat với Firstmate</small></div>
           <div class="darrow">giao việc</div>
           <div class="dnode dnode--hub">Firstmate · người điều phối<small>chia việc, chọn agent, theo dõi tiến độ</small></div>
           <div class="darrow">chia cho từng agent</div>
@@ -1881,11 +1881,11 @@
             <div class="dagent c-codex"><b>Agent 2 · Codex</b>Làm trên bản sao code riêng<br><span class="dtag">nhánh fm/viec-2</span></div>
             <div class="dagent c-anti"><b>Agent 3 · Antigravity</b>Làm trên bản sao code riêng<br><span class="dtag">nhánh fm/viec-3</span></div>
           </div>
-          <div class="darrow">mỗi việc thành một nhánh code</div>
-          <div class="dnode dnode--gate">Review và merge code<small>người duyệt từng nhánh, đạt thì gộp vào</small></div>
+          <div class="darrow">việc sửa code, tạo file thành một nhánh code</div>
+          <div class="dnode dnode--gate">Review và merge code<small>kiểm tra xong, người đồng ý thì Firstmate gộp vào</small></div>
           <div class="darrow"></div>
           <div class="dnode">Sản phẩm (code)</div>
-          <p class="diagram-note">Kết quả của mỗi agent nằm trong một nhánh code riêng, chờ người duyệt rồi mới gộp vào. Với code thì đây là cửa kiểm tra rất cần thiết.</p>
+          <p class="diagram-note">Việc sửa code hay tạo file thì kết quả nằm trong một nhánh code riêng, chờ duyệt rồi Firstmate mới gộp vào. Với code thì đây là cửa kiểm tra rất cần thiết. Việc điều tra (scout) thì không có nhánh, kết quả là một bản báo cáo.</p>
         </div>
 
         <div class="facts">
@@ -1902,12 +1902,13 @@
             </ul>
           </div>
           <div class="fact fact--wide">
-            <div class="fact-k">3 cách giao kết quả, cả 3 đều là cách đưa code về</div>
+            <div class="fact-k">3 cách giao kết quả cho việc sửa code</div>
             <ol>
               <li>Mở <span class="term">PR</span>: gửi đề nghị gộp code để người khác duyệt.</li>
               <li>Chạy qua bộ kiểm tra code tự động (<span class="term">no-mistakes</span>) rồi mới gửi.</li>
-              <li>Gộp thẳng vào code trên máy (<span class="term">local-only</span>).</li>
+              <li>Giữ trên máy, người đồng ý thì Firstmate gộp vào code (<span class="term">local-only</span>).</li>
             </ol>
+            <p>Có thể bật chế độ để Firstmate tự gộp khi mọi kiểm tra đều đạt, không cần người duyệt.</p>
           </div>
         </div>
 
@@ -1970,8 +1971,7 @@
         <div class="sec-num"><b>3</b> Test thực tế</div>
         <h2>Agent làm đúng việc. Vướng ở khâu nhận kết quả.</h2>
 
-        <p>Em giao cho Firstmate một số task SEO trên một project tập, dữ liệu public. Có hai điều em xác nhận được
-          trước tiên.</p>
+        <p>Em chạy Firstmate từ <strong>app Claude desktop</strong>, giao việc bằng chat, trên một project tập với dữ liệu public. Có hai điều em xác nhận được trước tiên.</p>
 
         <div class="diagram" role="img" aria-label="Vòng đời một task trên Firstmate: giao việc, chia việc và agent làm chạy tốt; nhận kết quả và nhắn thêm cho agent là hai chỗ nghẽn">
           <div class="diagram-cap">Vòng đời một task SEO trên Firstmate · chỗ chạy tốt và chỗ nghẽn</div>
@@ -1979,11 +1979,11 @@
             <div class="pstage"><span class="dflag dflag--plain">Bắt đầu</span><b>Giao việc</b><p>Gõ yêu cầu cho Firstmate</p></div>
             <div class="pstage pstage--ok"><span class="dflag dflag--ok">Tốt</span><b>Chia việc</b><p>Tự chia cho nhiều agent, mỗi agent một cửa sổ</p></div>
             <div class="pstage pstage--ok"><span class="dflag dflag--ok">Tốt</span><b>Agent làm</b><p>Chạy song song, làm đúng việc. Làm sạch keyword chỉ ~3 phút</p></div>
-            <div class="pstage pstage--bad"><span class="dflag">Nghẽn</span><b>Nhận kết quả</b><p>Tìm nhánh <span class="path">fm/…</span>, thư mục ẩn, review, merge</p></div>
+            <div class="pstage pstage--bad"><span class="dflag">Nghẽn</span><b>Nhận kết quả</b><p>Kết quả nằm ở nhánh <span class="path">fm/…</span> trên bản sao project, duyệt merge rồi kéo file về</p></div>
             <div class="pstage"><span class="dflag dflag--plain">Kết thúc</span><b>Dùng kết quả</b><p>Mở file ra kiểm, đưa vào việc</p></div>
           </div>
-          <div class="pside"><span class="dflag">Nghẽn</span><b>Muốn nhắn thêm cho agent đang làm:</b> phải mở màn hình lệnh, vào tmux, nhớ tổ hợp phím, chọn đúng cửa sổ agent.</div>
-          <p class="diagram-note">Phần agent làm việc thì chạy tốt. Chỗ nghẽn nằm ở khâu nhận kết quả và khâu nói chuyện với agent, vốn được làm cho người viết code.</p>
+          <div class="pside"><span class="dflag">Nghẽn</span><b>Muốn tự xem agent đang làm:</b> phải mở màn hình lệnh, vào tmux, nhớ tổ hợp phím, chọn đúng cửa sổ agent. Cài đặt, xử lý lỗi cũng phải gõ lệnh.</div>
+          <p class="diagram-note">Phần agent làm việc thì chạy tốt. Chỗ nghẽn nằm ở khâu nhận kết quả và những lúc phải vào màn hình lệnh, vốn được làm cho người viết code.</p>
         </div>
 
         <h3>Multi agent chạy thật, và chạy song song</h3>
@@ -2055,27 +2055,27 @@
 
         <h3>Sau khi agent làm xong: kết quả bị “cất” trong nhánh code</h3>
         <p>Việc làm sạch keyword làm xong chỉ trong khoảng 3 phút. Nhưng file kết quả <strong>không nằm trong thư mục
-            project</strong> để em mở ra dùng ngay. Agent báo:</p>
+            project</strong> để em mở ra dùng ngay. Firstmate báo:</p>
 
         <div class="term-box" aria-label="Thông báo của agent khi làm xong">
           <span class="s">done</span>: ready in branch <span class="p">fm/seo-keyword-clean</span><br>
           <span class="c"># file nằm ở: ~/.treehouse/seo-sandbox-d64f84/2/seo-sandbox/output/keywords-clean.csv</span>
         </div>
 
-        <p>Tức là file đang nằm trong một <strong>nhánh code riêng</strong>, ở một thư mục ẩn trên máy. Muốn file vào
-          đúng project thì phải qua bước <strong>review và merge</strong>, đúng như quy trình code ở phần 2.</p>
+        <p>Tức là file đang nằm trong một <strong>nhánh code riêng</strong>, ở một thư mục ẩn trên máy. Firstmate hỏi em
+          có đồng ý merge không, đồng ý thì nó tự gộp. Nhưng nó gộp vào <strong>bản sao project</strong> mà Firstmate giữ
+          riêng, nên file vẫn chưa có ở thư mục em đang làm việc.</p>
 
         <div class="journey">
           <div>
             <h4>Firstmate: để lấy được 1 file CSV</h4>
             <ol>
-              <li>Agent làm xong, báo “ready in branch <span class="path">fm/…</span>”</li>
-              <li>Mình phải biết nhánh là gì, file đang nằm ở thư mục ẩn nào</li>
-              <li>Review thay đổi trong nhánh (xem từng dòng code và file thêm vào)</li>
-              <li>Đồng ý để Firstmate merge vào project</li>
-              <li>Mở file kết quả ra dùng</li>
+              <li>Firstmate báo việc xong, kết quả nằm ở nhánh <span class="path">fm/…</span></li>
+              <li>Mở file trong thư mục làm việc riêng của agent để kiểm nội dung</li>
+              <li>Đồng ý để Firstmate merge vào bản sao project</li>
+              <li>Kéo file từ bản sao project về thư mục làm việc thật</li>
             </ol>
-            <div class="count">5 bước, có 3 bước cần hiểu git</div>
+            <div class="count">4 bước. Firstmate tự merge, nhưng mình vẫn phải hiểu nhánh và bản sao project</div>
           </div>
           <div class="want">
             <h4>Việc SEO cần</h4>
@@ -2094,10 +2094,11 @@
           dung tốt hơn.</p>
 
         <h3>Nếu là task đăng bài CMS, làm hình thì sao?</h3>
-        <p>Cách Firstmate giao kết quả là <strong>giống nhau cho mọi task</strong>: agent làm xong thì trả về một nhánh code,
-          chờ review và merge. Đây là luồng em đã chạy ở trên, và cũng là luồng được mô tả trong tài liệu của Firstmate.
-          Đặt luồng đó cạnh hai loại task SEO em làm nhiều nhất thì thấy rõ chỗ lệch: kết quả của chúng
-          <strong>không nằm trong code</strong> để mà merge.</p>
+        <p>Với việc tạo ra file hay sửa code, Firstmate giao kết quả theo <strong>cùng một cách</strong>: agent làm xong thì
+          trả về một nhánh code, chờ duyệt rồi gộp. Việc điều tra thì ra một bản báo cáo nằm trong thư mục riêng của
+          Firstmate. Đây là những gì em đã chạy ở trên, và cũng là luồng được mô tả trong tài liệu của Firstmate. Cả hai
+          cách đều không đi thẳng lên CMS hay Sheet. Đặt cạnh hai loại task SEO em làm nhiều nhất thì thấy rõ chỗ lệch:
+          kết quả của chúng <strong>không nằm trong code</strong> để mà merge.</p>
 
         <div class="scen">
           <div class="scen-head"><b>Đăng bài lên CMS</b><span>Theo luồng giao kết quả</span></div>
@@ -2142,12 +2143,13 @@
           </div>
         </div>
 
-        <h3>Muốn nói chuyện tiếp với agent đang làm: phải qua màn hình lệnh</h3>
-        <p>Trong lúc agent chạy, nếu em muốn nhắc thêm một ý hay sửa hướng (ví dụ “bỏ thêm keyword máy cũ”, “đổi tiêu đề
-          bài”), em không chat được như bình thường. Mỗi agent chạy trong một cửa sổ của <strong>tmux</strong>, phần mềm
-          chia nhiều cửa sổ trong màn hình lệnh. Muốn vào đúng agent thì phải làm như sau:</p>
+        <h3>Nhắn agent qua Firstmate thì được, nhưng nhiều lúc vẫn phải vào màn hình lệnh</h3>
+        <p>Trong lúc agent chạy, nếu em muốn nhắc thêm một ý (ví dụ “bỏ thêm keyword máy cũ”), em nhắn Firstmate trong
+          khung chat, Firstmate sẽ chuyển lời cho agent. Phần này dùng được như chat bình thường.</p>
+        <p>Nhưng muốn <strong>tự xem agent đang làm tới đâu</strong>, hoặc nói thẳng với agent, thì phải vào màn hình
+          lệnh. Mỗi agent chạy trong một cửa sổ của <strong>tmux</strong>, phần mềm chia nhiều cửa sổ trong màn hình lệnh:</p>
 
-        <div class="term-box" aria-label="Các bước để nói chuyện với một agent đang chạy">
+        <div class="term-box" aria-label="Các bước để xem một agent đang chạy">
           <span class="c"># 1. Mở app Terminal, gõ lệnh để vào lại phiên làm việc</span><br>
           <span class="p">$</span> tmux attach -t firstmate<br>
           <span class="c"># 2. Bấm Control+B, buông ra, bấm W để xem danh sách cửa sổ</span><br>
@@ -2156,6 +2158,9 @@
           <span class="bar">[firstmate] 0:firstmate 1:fm-seo-crawl-audit 2:fm-seo-keyword-clean*</span>
         </div>
 
+        <p>Lúc cài đặt cũng vậy: em phải tự gõ lệnh cài thêm công cụ (<span class="term">treehouse</span>,
+          <span class="term">tasks-axi</span>, bản <span class="term">bash</span> mới hơn), vì app không cho Firstmate tự cài.</p>
+
         <p>Với người quen màn hình lệnh thì đây là chuyện nhỏ. Nhưng phần lớn anh chị em làm SEO chỉ quen <strong>khung
             chat</strong>. Nhớ tổ hợp phím, phân biệt cửa sổ, đọc báo lỗi tiếng Anh kỹ thuật: mỗi bước đều là một chỗ dễ
           bị kẹt. Bấm nhầm (ví dụ Control+C) còn có thể dừng luôn agent đang làm.</p>
@@ -2163,7 +2168,7 @@
         <div class="callout callout--pain">
           <div class="callout__title">Kết luận phần 3</div>
           <p>Firstmate <strong>chạy multi agent được thật</strong>, và agent <strong>làm đúng việc</strong>. Nhưng khâu
-            sau đó (nhận kết quả, review, merge, nói chuyện tiếp với agent) được thiết kế cho người làm code. Với task
+            sau đó (nhận kết quả, review, merge, cài đặt, xem agent làm) được thiết kế cho người làm code. Với task
             SEO, khâu này làm mỗi task <strong>dài và rườm rà hơn</strong>, và người không biết code khó tự xoay xở.</p>
         </div>
       </section>
@@ -2257,7 +2262,7 @@
         <div class="callout callout--key">
           <div class="callout__title">Kết luận phần 4</div>
           <p>Multi agent giúp <strong>nhiều việc chạy cùng lúc</strong>. Còn agent <strong>làm đúng việc</strong> là nhờ bộ sổ tay, luật, skill và bài học được xây dần. Bộ này càng đầy đủ thì càng nhiều agent cùng làm đúng.</p>
-          <p>Firstmate cho mình phần “nhiều người cùng làm”. Còn phần “hiểu việc SEO” thì dùng Firstmate hay công cụ nào cũng phải tự xây. Đó là phần tốn công nhất, và cũng là phần giá trị nhất.</p>
+          <p>Firstmate cho mình phần “nhiều người cùng làm”. Còn phần “hiểu việc SEO” thì dùng Firstmate hay công cụ nào cũng phải tự xây. Đó là phần tốn công nhất, và cũng là phần giá trị nhất. Điểm hay là agent của Firstmate cũng tự đọc sổ tay, luật, skill nằm trong thư mục project, nên bộ này dùng chung được, không phải chọn một bỏ một.</p>
         </div>
       </section>
 
@@ -2266,7 +2271,7 @@
         <div class="sec-num"><b>5</b> Ghi nhận</div>
         <h2>Những điểm Firstmate làm rất tốt</h2>
 
-        <p>Dù chưa hợp với việc SEO hằng ngày, khi test em thấy Firstmate có nhiều điểm <strong>rất đáng học</strong>. Đây là những thứ được thiết kế kỹ, không phải repo nào cũng có:</p>
+        <p>Dù chưa hợp với việc SEO hằng ngày, qua lần test và đọc tài liệu, em thấy Firstmate có nhiều điểm <strong>rất đáng học</strong>. Đây là những thứ được thiết kế kỹ, không phải repo nào cũng có:</p>
 
         <div class="facts">
           <div class="fact">
@@ -2275,7 +2280,7 @@
           </div>
           <div class="fact">
             <div class="fact-k">Chọn đúng agent cho từng việc</div>
-            <p>Việc nào giao Claude, việc nào giao Codex hay Antigravity đều cấu hình được. Nó còn xem hạn mức còn lại của từng tài khoản trước khi giao.</p>
+            <p>Việc nào giao Claude, việc nào giao Codex hay Antigravity đều cấu hình được. Khi cấu hình nhiều lựa chọn, nó còn xem hạn mức còn lại của từng tài khoản trước khi giao. Lần test em chỉ định agent bằng tay.</p>
           </div>
           <div class="fact">
             <div class="fact-k">Tắt máy mở lại vẫn nhớ việc</div>
@@ -2283,17 +2288,19 @@
           </div>
           <div class="fact">
             <div class="fact-k">Tự phát hiện agent bị kẹt</div>
-            <p>Agent đứng im, lặp vòng hay không phản hồi thì nó tự nhận ra và xử lý, người dùng không phải ngồi canh từng cửa sổ.</p>
+            <p>Có bộ theo dõi tự nhận ra agent xong việc, đứng im hay lặp vòng rồi gọi Firstmate xử lý. Trường hợp không rõ thì nó báo người, không tự làm liều.</p>
           </div>
           <div class="fact">
             <div class="fact-k">Chỉ hỏi người khi thật sự cần</div>
             <p>Việc cần người quyết thì được để riêng một hàng chờ. Còn lại agent tự làm tiếp, không hỏi lặt vặt.</p>
           </div>
           <div class="fact">
-            <div class="fact-k">Điều khiển được trình duyệt</div>
-            <p>Agent mở trang, bấm, đọc nội dung được. Phần 3 em đã thử với Antigravity và chạy đúng.</p>
+            <div class="fact-k">Có công cụ trình duyệt cho agent</div>
+            <p>Firstmate có sẵn công cụ để agent mở trang, bấm, đọc nội dung. Lần test em chưa cài công cụ này, Antigravity mở trang bằng công cụ trình duyệt có sẵn trên máy em.</p>
           </div>
         </div>
+
+        <p class="stack-note">Lần test em chạy Firstmate từ app Claude, mở ở thư mục cha nên bộ theo dõi tự động của Firstmate chưa bật. Các điểm về hạn mức, phát hiện agent kẹt, nhớ việc khi khởi động lại em đọc từ tài liệu, chưa thấy chạy thật.</p>
 
         <h3>Firstmate hợp nhất khi nào</h3>
         <p>Theo em, Firstmate phát huy tốt nhất khi <strong>build tool</strong>: ví dụ lần sau em sửa extension check rank, hoặc làm một công cụ nội bộ mới. Lúc đó sản phẩm cuối là code, đúng kiểu việc nó được làm ra để phục vụ, và quy trình duyệt rồi gộp code ở phần 2 lại là điểm mạnh.</p>
@@ -2324,7 +2331,7 @@
         </div>
 
         <h3>Mô hình: một người điều phối, mỗi agent một vai</h3>
-        <p>So với sơ đồ Firstmate ở phần 2, khác biệt nằm ở hai đầu: em giao việc bằng chat, và kết quả đi qua <strong>cổng kiểm bằng chứng</strong> thay vì cửa review, merge code.</p>
+        <p>So với sơ đồ Firstmate ở phần 2, khác biệt nằm ở hai đầu: em chat tiếp được với từng agent ngay trong app của nó, và kết quả đi qua <strong>cổng kiểm bằng chứng</strong> thay vì cửa review, merge code.</p>
 
         <div class="diagram" role="img" aria-label="Sơ đồ seo-crew: em chat với Claude, Claude điều phối và giao việc cho Antigravity, Codex và một Claude phụ để kiểm lại; các agent trả file bằng chứng qua cổng nghiệm thu; kết quả nằm sẵn ở CMS, Sheet, thư mục task">
           <div class="diagram-cap">Mô hình seo-crew</div>
