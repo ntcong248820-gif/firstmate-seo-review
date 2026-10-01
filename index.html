@@ -630,6 +630,331 @@
       margin-right: auto;
     }
 
+    /* ── Sơ đồ minh hoạ ── */
+    .diagram {
+      margin: 28px 0 32px;
+      padding: 22px 22px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .diagram-cap {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 18px;
+    }
+
+    .diagram-note {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin: 16px 0 0;
+      line-height: 1.55;
+    }
+
+    .dnode {
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: var(--surface2);
+      text-align: center;
+      font-weight: 600;
+      color: var(--text-bright);
+      font-size: 15px;
+      line-height: 1.35;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .dnode small {
+      display: block;
+      font-weight: 400;
+      color: var(--text-dim);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .dnode--hub {
+      background: var(--accent-dim);
+      border-color: color-mix(in srgb, var(--border) 30%, var(--accent) 70%);
+    }
+
+    .dnode--gate {
+      background: var(--amber-dim);
+      border-color: color-mix(in srgb, var(--border) 30%, var(--amber) 70%);
+    }
+
+    .dnode--good {
+      background: var(--green-dim);
+      border-color: color-mix(in srgb, var(--border) 30%, var(--green) 70%);
+    }
+
+    .darrow {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      padding: 4px 0 6px;
+      line-height: 1.3;
+    }
+
+    .darrow::before {
+      content: '↓';
+      display: block;
+      font-size: 18px;
+      color: var(--text-dim);
+    }
+
+    .darrow--both::before {
+      content: '↕';
+    }
+
+    /* Toả ra nhiều agent rồi gom lại */
+    .dfan {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      position: relative;
+      padding: 18px 0;
+    }
+
+    .dfan::before,
+    .dfan::after {
+      content: '';
+      position: absolute;
+      left: 16.66%;
+      right: 16.66%;
+      border-top: 2px solid var(--border-bright);
+    }
+
+    .dfan::before {
+      top: 0;
+    }
+
+    .dfan::after {
+      bottom: 0;
+    }
+
+    .dagent {
+      position: relative;
+      border: 1px solid var(--border-bright);
+      border-left: 4px solid var(--c, var(--border-bright));
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: var(--surface-elevated);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+
+    .dagent::before,
+    .dagent::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      height: 18px;
+      border-left: 2px solid var(--border-bright);
+    }
+
+    .dagent::before {
+      top: -19px;
+    }
+
+    .dagent::after {
+      bottom: -19px;
+    }
+
+    .dagent b {
+      display: block;
+      color: var(--text-bright);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .dtag {
+      display: inline-block;
+      margin-top: 7px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--surface2);
+      color: var(--text);
+    }
+
+    .c-claude { --c: var(--accent); }
+    .c-codex { --c: var(--plum); }
+    .c-anti { --c: var(--teal); }
+
+    /* Vòng đời task: chỗ tốt, chỗ nghẽn */
+    .pipe {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pstage {
+      position: relative;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.45;
+    }
+
+    .pstage::before {
+      content: '';
+      display: block;
+      height: 12px;
+      border-radius: 6px;
+      background: var(--border-bright);
+      margin-bottom: 12px;
+    }
+
+    .pstage--ok::before {
+      background: var(--green);
+    }
+
+    .pstage--bad::before {
+      background: var(--red);
+      height: 4px;
+      margin: 4px 22% 16px;
+    }
+
+    .pstage:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -15px;
+      top: -6px;
+      color: var(--text-dim);
+      font-size: 15px;
+    }
+
+    .pstage b {
+      display: block;
+      color: var(--text-bright);
+      font-size: 15px;
+      margin: 6px 0 3px;
+    }
+
+    .pstage p {
+      margin: 0;
+    }
+
+    .dflag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--red);
+      color: var(--bg);
+    }
+
+    .dflag--ok {
+      background: var(--green);
+    }
+
+    .dflag--plain {
+      background: var(--surface2);
+      color: var(--text-dim);
+    }
+
+    .pside {
+      margin-top: 18px;
+      padding: 12px 14px;
+      border: 1px dashed color-mix(in srgb, var(--border) 30%, var(--red) 70%);
+      border-radius: 10px;
+      background: var(--red-dim);
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .pside .dflag {
+      margin-right: 8px;
+    }
+
+    /* Ví dụ phối hợp: tiếp sức giữa các agent */
+    .relay {
+      position: relative;
+      margin: 22px 0 28px;
+      padding-left: 26px;
+    }
+
+    .relay::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      border-left: 2px solid var(--border-bright);
+    }
+
+    .relay-step {
+      position: relative;
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .relay-step::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--text-dim);
+    }
+
+    .relay-step p {
+      margin: 4px 0 0;
+    }
+
+    .relay-par {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .relay-par>div {
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--c);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 8px 10px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .relay-par>div .who {
+      margin-bottom: 4px;
+    }
+
+    .who {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--bg);
+      background: var(--c);
+    }
+
+    .relay-tip {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: .5px;
+    }
+
     /* ── Sản phẩm cuối: IT vs SEO ── */
     .compare {
       display: grid;
@@ -1198,6 +1523,37 @@
       }
 
       .lessons, .loop, .shots { grid-template-columns: 1fr; }
+
+      .dfan,
+      .relay-par {
+        grid-template-columns: 1fr;
+      }
+
+      .dfan {
+        padding: 6px 0;
+        gap: 10px;
+      }
+
+      .dfan::before,
+      .dfan::after,
+      .dagent::before,
+      .dagent::after {
+        display: none;
+      }
+
+      .pipe {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .pstage:not(:last-child)::after {
+        content: '↓';
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -19px;
+      }
+
       .layer { grid-template-columns: 40px minmax(0, 1fr); }
       .layer-m { grid-column: 2; text-align: left; }
       .layer-m b { display: inline; font-size: 18px; margin-right: 6px; }
@@ -1233,7 +1589,6 @@
         <p class="lead fade">Em đã test repo Firstmate anh Hưng gửi trên một vài task, đồng thời tìm hiểu xem bản chất
           repo này được làm ra để phục vụ việc gì. Em không có report chi tiết như anh Khoa, nhưng có một số nhận định
           dưới đây.</p>
-        <p class="byline">Viết cho người không chuyên kỹ thuật đọc được. Các phần sau đang được bổ sung dần.</p>
       </header>
 
       <!-- ───────── Phần 1 ───────── -->
@@ -1313,6 +1668,24 @@
           </div>
         </div>
         <p class="flow-note">Bước cuối luôn là review và merge code, đúng như quy trình anh An chia sẻ.</p>
+
+        <div class="diagram" role="img" aria-label="Sơ đồ: người dùng giao việc cho Firstmate, Firstmate chia cho 3 agent, mỗi agent làm trên bản sao code riêng và trả về một nhánh code, rồi người duyệt review và merge vào sản phẩm">
+          <div class="diagram-cap">Mô hình multi agent của Firstmate</div>
+          <div class="dnode">Người dùng<small>giao việc trong màn hình lệnh</small></div>
+          <div class="darrow">giao việc</div>
+          <div class="dnode dnode--hub">Firstmate · người điều phối<small>chia việc, chọn agent, theo dõi tiến độ</small></div>
+          <div class="darrow">chia cho từng agent</div>
+          <div class="dfan">
+            <div class="dagent c-claude"><b>Agent 1 · Claude</b>Làm trên bản sao code riêng<br><span class="dtag">nhánh fm/viec-1</span></div>
+            <div class="dagent c-codex"><b>Agent 2 · Codex</b>Làm trên bản sao code riêng<br><span class="dtag">nhánh fm/viec-2</span></div>
+            <div class="dagent c-anti"><b>Agent 3 · Antigravity</b>Làm trên bản sao code riêng<br><span class="dtag">nhánh fm/viec-3</span></div>
+          </div>
+          <div class="darrow">mỗi việc thành một nhánh code</div>
+          <div class="dnode dnode--gate">Review và merge code<small>người duyệt từng nhánh, đạt thì gộp vào</small></div>
+          <div class="darrow"></div>
+          <div class="dnode">Sản phẩm (code)</div>
+          <p class="diagram-note">Kết quả của mỗi agent nằm trong một nhánh code riêng, chờ người duyệt rồi mới gộp vào. Với code thì đây là cửa kiểm tra rất cần thiết.</p>
+        </div>
 
         <div class="facts">
           <div class="fact">
@@ -1398,6 +1771,19 @@
 
         <p>Em giao cho Firstmate một số task SEO trên một project tập, dữ liệu public. Có hai điều em xác nhận được
           trước tiên.</p>
+
+        <div class="diagram" role="img" aria-label="Vòng đời một task trên Firstmate: giao việc, chia việc và agent làm chạy tốt; nhận kết quả và nhắn thêm cho agent là hai chỗ nghẽn">
+          <div class="diagram-cap">Vòng đời một task SEO trên Firstmate · chỗ chạy tốt và chỗ nghẽn</div>
+          <div class="pipe">
+            <div class="pstage"><span class="dflag dflag--plain">Bắt đầu</span><b>Giao việc</b><p>Gõ yêu cầu cho Firstmate</p></div>
+            <div class="pstage pstage--ok"><span class="dflag dflag--ok">Tốt</span><b>Chia việc</b><p>Tự chia cho nhiều agent, mỗi agent một cửa sổ</p></div>
+            <div class="pstage pstage--ok"><span class="dflag dflag--ok">Tốt</span><b>Agent làm</b><p>Chạy song song, làm đúng việc. Làm sạch keyword chỉ ~3 phút</p></div>
+            <div class="pstage pstage--bad"><span class="dflag">Nghẽn</span><b>Nhận kết quả</b><p>Tìm nhánh <span class="path">fm/…</span>, thư mục ẩn, review, merge</p></div>
+            <div class="pstage"><span class="dflag dflag--plain">Kết thúc</span><b>Dùng kết quả</b><p>Mở file ra kiểm, đưa vào việc</p></div>
+          </div>
+          <div class="pside"><span class="dflag">Nghẽn</span><b>Muốn nhắn thêm cho agent đang làm:</b> phải mở màn hình lệnh, vào tmux, nhớ tổ hợp phím, chọn đúng cửa sổ agent.</div>
+          <p class="diagram-note">Phần agent làm việc thì chạy tốt. Chỗ nghẽn nằm ở khâu nhận kết quả và khâu nói chuyện với agent, vốn được làm cho người viết code.</p>
+        </div>
 
         <h3>Multi agent chạy thật, và chạy song song</h3>
         <p>Firstmate tự chia việc cho nhiều agent, mỗi agent một cửa sổ riêng. Hai việc dưới đây chạy <strong>chồng lên
@@ -1734,6 +2120,52 @@
           </div>
         </div>
 
+        <h3>Mô hình: một người điều phối, mỗi agent một vai</h3>
+        <p>So với sơ đồ Firstmate ở phần 2, khác biệt nằm ở hai đầu: em giao việc bằng chat, và kết quả đi qua <strong>cổng kiểm bằng chứng</strong> thay vì cửa review, merge code.</p>
+
+        <div class="diagram" role="img" aria-label="Sơ đồ seo-crew: em chat với Claude, Claude điều phối và giao việc cho Antigravity, Codex và một Claude phụ để kiểm lại; các agent trả file bằng chứng qua cổng nghiệm thu; kết quả nằm sẵn ở CMS, Sheet, thư mục task">
+          <div class="diagram-cap">Mô hình seo-crew</div>
+          <div class="dnode">Em<small>chat với Claude như bình thường</small></div>
+          <div class="darrow darrow--both">giao việc · nhận báo cáo</div>
+          <div class="dnode dnode--hub">Claude · người điều phối<small>hiểu việc, chia vai, viết phiếu giao việc, kiểm kết quả</small></div>
+          <div class="darrow">phiếu giao việc</div>
+          <div class="dfan">
+            <div class="dagent c-anti"><b>Antigravity</b>Việc đã có công thức sẵn trong skill: SEO hình, đo trang, việc cần trình duyệt<br><span class="dtag">em chat tiếp trong app</span></div>
+            <div class="dagent c-codex"><b>Codex</b>Code, xử lý dữ liệu lớn, chạy theo lô<br><span class="dtag">em chat tiếp trong app</span></div>
+            <div class="dagent c-claude"><b>Claude phụ</b>Kiểm lại kết quả của agent khác, không tin agent tự báo<br><span class="dtag">kiểm chéo</span></div>
+          </div>
+          <div class="darrow">file bằng chứng</div>
+          <div class="dnode dnode--good">Cổng nghiệm thu<small>không có bằng chứng thì chưa tính là xong</small></div>
+          <div class="darrow"></div>
+          <div class="dnode">Kết quả nằm sẵn ở CMS, Sheet, thư mục task<small>không có bước review, merge code</small></div>
+        </div>
+
+        <h3>Các agent trao đổi và phối hợp với nhau thế nào</h3>
+        <p>Cái em muốn xây không chỉ là cho nhiều agent <strong>chạy cùng lúc</strong>, mà là để chúng <strong>làm việc được với nhau</strong>, giống một nhóm có trưởng nhóm:</p>
+
+        <div class="facts">
+          <div class="fact">
+            <div class="fact-k">Chia vai theo thế mạnh</div>
+            <p>Việc đã có công thức sẵn thì giao Antigravity vì nhanh, gọn. Việc code, dữ liệu thì giao Codex. Việc cần phán đoán, đọc số rồi kết luận thì Claude giữ lại.</p>
+          </div>
+          <div class="fact">
+            <div class="fact-k">Nói chung một “ngôn ngữ”</div>
+            <p>Agent nào cũng nhận <strong>phiếu giao việc</strong> cùng một mẫu (làm gì, sửa file nào, thế nào là đạt) và trả <strong>file bằng chứng</strong> cùng một mẫu. Nhờ vậy kết quả của agent này đưa sang agent khác dùng tiếp được.</p>
+          </div>
+          <div class="fact">
+            <div class="fact-k">Agent này kiểm bài agent kia</div>
+            <p>Kết quả Antigravity hay Codex trả về được một Claude khác kiểm lại từ dữ liệu thật. Agent tự báo “đạt” không được tính.</p>
+          </div>
+          <div class="fact">
+            <div class="fact-k">Có trưởng nhóm, không loạn</div>
+            <p>Chỉ Claude được giao việc. Agent làm việc không tự giao tiếp cho agent khác, nên không có cảnh việc bị giao lòng vòng giữa các agent, khó kiểm soát.</p>
+          </div>
+          <div class="fact fact--wide">
+            <div class="fact-k">Việc hôm nay nối tiếp việc hôm qua</div>
+            <p>Mỗi agent giữ lại cuộc chat của mình. Hôm sau cần làm tiếp thì mở lại đúng cuộc chat đó, agent nhớ mình đã làm gì, không phải giao lại từ đầu.</p>
+          </div>
+        </div>
+
         <h3>Cách giao và nhận việc</h3>
         <div class="loop">
           <div class="loop-step"><b>Em nhờ Claude</b><p>Nói việc cần làm bằng chat như bình thường</p></div>
@@ -1750,6 +2182,31 @@
           <figcaption><b>Claude báo đã giao việc.</b> Antigravity chạy nền đo trang trên Live 10%, xong Claude kiểm kết quả rồi mới báo em.</figcaption>
         </figure>
 
+        <h3>Ví dụ trong công việc hằng ngày: một buổi nghiệm thu web</h3>
+        <p>Đây là cách các agent tiếp sức nhau khi em nghiệm thu giao diện web mới với bên IT. Em chỉ nói yêu cầu với Claude, phần còn lại các agent tự chuyền cho nhau:</p>
+
+        <div class="relay">
+          <div class="relay-step"><span class="who c-claude">Claude</span><p>Nhận yêu cầu nghiệm thu, chia thành từng phần cần đo, viết phiếu giao việc</p></div>
+          <div class="relay-step">
+            <span class="relay-tip">Chạy cùng lúc</span>
+            <div class="relay-par">
+              <div class="c-anti"><span class="who">Antigravity</span><br>Đo breadcrumb trên 3 môi trường</div>
+              <div class="c-anti"><span class="who">Antigravity</span><br>Đo pre-render và heading</div>
+              <div class="c-codex"><span class="who">Codex</span><br>Đo trang trên 3 môi trường</div>
+            </div>
+          </div>
+          <div class="relay-step"><span class="who c-claude">Claude phụ</span><p>Kiểm lại từng kết quả Antigravity và Codex trả về, đối chiếu dữ liệu thật</p></div>
+          <div class="relay-step"><span class="who c-claude">Claude</span><p>Tổng hợp, báo em dòng nào đạt, dòng nào lỗi để chuyển IT</p></div>
+          <div class="relay-step"><span class="who c-anti">Antigravity</span><p>IT sửa xong thì đo lại đúng những dòng lỗi, không đo lại từ đầu</p></div>
+        </div>
+
+        <figure class="shot shot--narrow">
+          <img src="assets/crew-claude-dispatch.webp" width="636" height="1310" loading="lazy"
+            alt="Danh sách các việc Claude đã giao cho Antigravity và Codex trong một buổi nghiệm thu web">
+          <figcaption><b>Ảnh thật của buổi nghiệm thu đó.</b> Phần khung đỏ là các việc Claude giao cho Antigravity và Codex. Phía trên là các lượt Claude phụ kiểm lại kết quả agent trả về.</figcaption>
+        </figure>
+
+        <h3>Em nói chuyện tiếp với agent ngay trong app</h3>
         <div class="shots">
           <figure class="shot">
             <img src="assets/crew-anti-app.webp" width="1280" height="1280" loading="lazy"
@@ -1763,16 +2220,10 @@
           </figure>
         </div>
 
-        <figure class="shot shot--narrow">
-          <img src="assets/crew-claude-dispatch.webp" width="636" height="1310" loading="lazy"
-            alt="Danh sách các việc Claude đã giao cho Antigravity và Codex trong một buổi nghiệm thu web">
-          <figcaption><b>Một buổi nghiệm thu web.</b> Phần khung đỏ là các việc Claude giao cho Antigravity và Codex đo trên nhiều môi trường. Phía trên là các lượt Claude tự kiểm lại kết quả agent trả về.</figcaption>
-        </figure>
-
         <div class="callout callout--key">
           <div class="callout__title">Kết luận phần 6</div>
-          <p>Đến nay em đã giao việc qua seo-crew <strong>hơn 120 lần</strong>, cho các việc thật trong công việc hằng ngày. Hệ thống này chưa hoàn hảo, nhưng đã chạy được với task SEO và dùng được qua app.</p>
-          <p>Nên khi đọc Firstmate, em nhìn theo hướng <strong>học những điểm tốt ở phần 5</strong> để đưa vào seo-crew, hơn là chuyển hẳn sang Firstmate.</p>
+          <p>Đến nay em đã giao việc qua seo-crew <strong>hơn 120 lần</strong>, cho các việc thật hằng ngày: nghiệm thu web, SEO hình, chèn link, xử lý dữ liệu. Thứ em xây không chỉ là cho nhiều agent chạy cùng lúc, mà để các agent <strong>phối hợp được với nhau</strong>: mỗi agent một vai theo thế mạnh, giao nhận bằng phiếu việc và file bằng chứng, agent này kiểm lại kết quả agent kia, việc hôm nay nối tiếp được việc hôm qua. Và em vẫn điều khiển tất cả bằng chat.</p>
+          <p>Hệ thống chưa hoàn hảo, nhưng đã chạy được với task SEO. Nên khi đọc Firstmate, em nhìn theo hướng <strong>học những điểm tốt ở phần 5</strong> (chọn agent theo hạn mức còn lại, tự phát hiện agent bị kẹt, khởi động lại vẫn nhớ việc) để đưa vào seo-crew, hơn là chuyển hẳn sang Firstmate.</p>
         </div>
       </section>
 
