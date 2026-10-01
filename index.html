@@ -1147,43 +1147,6 @@
     }
 
     
-    /* ── Giải thích nhanh vài từ kỹ thuật ── */
-    .glossary {
-      margin: 26px 0 8px;
-      padding: 18px 20px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: var(--surface);
-    }
-
-    .glossary-title {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 10px;
-    }
-
-    .glossary dl {
-      display: grid;
-      grid-template-columns: max-content minmax(0, 1fr);
-      gap: 8px 16px;
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .glossary dt {
-      font-weight: 700;
-      color: var(--text-bright);
-    }
-
-    .glossary dd {
-      margin: 0;
-      color: var(--text);
-    }
-
     /* ── Sản phẩm cuối: IT vs SEO ── */
     .compare {
       display: grid;
@@ -1752,8 +1715,6 @@
       }
 
       .lessons, .loop, .shots { grid-template-columns: 1fr; }
-      .glossary dl { grid-template-columns: 1fr; gap: 2px 0; }
-      .glossary dd { margin-bottom: 8px; }
 
       .hub-ring {
         grid-template-columns: 1fr 1fr;
@@ -1829,19 +1790,6 @@
         <h1 class="fade">Firstmate rất mạnh cho lập trình, nhưng <em>chưa hợp</em> với việc SEO hằng ngày</h1>
         <p class="lead fade">Em đã test Firstmate anh Hưng gửi trên một vài task, đồng thời tìm hiểu xem bản chất công cụ này được làm ra để phục vụ việc gì. Em không có report chi tiết như anh Khoa, nhưng có một số nhận định
           dưới đây.</p>
-      
-        <div class="glossary fade">
-          <div class="glossary-title">Vài từ kỹ thuật trong bài, giải thích nhanh</div>
-          <dl>
-            <dt>Agent</dt><dd>Một AI được giao làm trọn một việc, ví dụ Claude, Codex, Antigravity.</dd>
-            <dt>Code</dt><dd>Phần “ruột” của phần mềm, công cụ. Dân IT làm ra sản phẩm bằng cách viết và sửa code.</dd>
-            <dt>Nhánh code</dt><dd>Một bản nháp tách riêng khỏi bản chính. Sửa trên bản nháp, kiểm xong mới gộp vào bản chính.</dd>
-            <dt>Review, merge</dt><dd>Review là kiểm bản nháp. Merge là gộp bản nháp vào bản chính.</dd>
-            <dt>GitHub</dt><dd>Nơi lưu code trên mạng, ghi lại từng lần sửa để xem lại hoặc quay về khi cần.</dd>
-            <dt>Màn hình lệnh</dt><dd>Cửa sổ chỉ có chữ, không có nút bấm. Muốn máy làm gì phải gõ lệnh (trên Mac gọi là Terminal).</dd>
-            <dt>tmux</dt><dd>Phần mềm chia màn hình lệnh thành nhiều ô. Firstmate cho mỗi agent chạy trong một ô.</dd>
-          </dl>
-        </div>
       </header>
 
       <!-- ───────── Phần 1 ───────── -->
@@ -1850,12 +1798,12 @@
         <h2>Bối cảnh của em khi tìm hiểu Firstmate</h2>
 
         <p>Trước đây em cũng đã tìm hiểu trong các group và đọc khá nhiều bài về việc dùng <strong>Multi Agent</strong>,
-          tức là cho nhiều AI cùng chia nhau làm việc.</p>
+          tức là cho nhiều AI cùng chia nhau làm việc. Mỗi AI được giao làm trọn một việc như vậy gọi là một <strong>agent</strong>.</p>
 
         <div class="callout callout--pain">
           <div class="callout__title">Điểm vướng lớn nhất</div>
           <p>Có rất nhiều công cụ cho phép dùng multi agent giống Firstmate. Nhưng gần như tất cả đều <strong>do dân
-              IT/Tech làm ra</strong>, và cuối cùng đều phục vụ cho <strong>việc lập trình</strong>. Khi đem áp vào công
+              IT/Tech làm ra</strong>, và cuối cùng đều phục vụ cho <strong>việc lập trình</strong>, tức là viết và sửa code, phần “ruột” làm nên phần mềm. Khi đem áp vào công
             việc của em thì rất khó vừa.</p>
         </div>
 
@@ -1888,7 +1836,7 @@
           <cite>Quy trình code hiện tại của IT, theo anh An</cite>
         </blockquote>
 
-        <p>Em sẽ giải thích rõ hơn quy trình này ở phần dưới.</p>
+        <p>Review là kiểm lại phần code vừa sửa, merge là gộp phần đó vào sản phẩm chính. Em sẽ giải thích rõ hơn quy trình này ở phần dưới.</p>
       </section>
 
       <!-- ───────── Phần 2 ───────── -->
@@ -1937,7 +1885,7 @@
           <div class="dnode dnode--gate">Kiểm và gộp code (review, merge)<small>kiểm tra xong, người đồng ý thì Firstmate gộp vào</small></div>
           <div class="darrow"></div>
           <div class="dnode">Sản phẩm (code)</div>
-          <p class="diagram-note">Việc sửa code hay tạo file thì kết quả nằm trong một nhánh code riêng, chờ duyệt rồi Firstmate mới gộp vào. Với code thì đây là cửa kiểm tra rất cần thiết. Việc điều tra thì không có nhánh, kết quả là một bản báo cáo.</p>
+          <p class="diagram-note">Việc sửa code hay tạo file thì kết quả nằm trong một nhánh code riêng, tức là một bản nháp tách khỏi bản chính, chờ duyệt rồi Firstmate mới gộp vào. Với code thì đây là cửa kiểm tra rất cần thiết. Việc điều tra thì không có nhánh, kết quả là một bản báo cáo.</p>
         </div>
 
         <div class="facts">
@@ -1956,7 +1904,7 @@
           <div class="fact fact--wide">
             <div class="fact-k">3 cách giao kết quả cho việc sửa code</div>
             <ol>
-              <li>Gửi lên GitHub một đề nghị gộp code để người khác duyệt.</li>
+              <li>Gửi lên GitHub (nơi lưu code trên mạng) một đề nghị gộp code để người khác duyệt.</li>
               <li>Cho qua bộ kiểm tra code tự động rồi mới gửi.</li>
               <li>Giữ trên máy, người đồng ý thì Firstmate gộp vào bản chính.</li>
             </ol>
@@ -2032,7 +1980,7 @@
             <div class="pstage pstage--bad"><span class="dflag">Nghẽn</span><b>Nhận kết quả</b><p>Kết quả nằm ở một nhánh code riêng, phải đồng ý gộp rồi tự chép file về</p></div>
             <div class="pstage"><span class="dflag dflag--plain">Kết thúc</span><b>Dùng kết quả</b><p>Mở file ra kiểm, đưa vào việc</p></div>
           </div>
-          <div class="pside"><span class="dflag">Nghẽn</span><b>Muốn tự xem agent đang làm:</b> phải mở màn hình lệnh, vào tmux, nhớ tổ hợp phím, chọn đúng ô của agent. Cài đặt, xử lý lỗi cũng phải gõ lệnh.</div>
+          <div class="pside"><span class="dflag">Nghẽn</span><b>Muốn tự xem agent đang làm:</b> phải mở màn hình lệnh, nhớ tổ hợp phím, chọn đúng ô của agent. Cài đặt, xử lý lỗi cũng phải gõ lệnh.</div>
           <p class="diagram-note">Phần agent làm việc thì chạy tốt. Chỗ nghẽn nằm ở khâu nhận kết quả và những lúc phải vào màn hình lệnh, vốn được làm cho người viết code.</p>
         </div>
 
